@@ -2,7 +2,7 @@ version: "3.9"
 services:
   postgres:
     container_name: nto_postgres
-    image: postgres:${POSTGRES_TAG}
+    image: postgres:15.1
     # command:
     #   - "postgres"
       # - "-c"
@@ -59,7 +59,7 @@ services:
 
   pgadmin:
     container_name: nto_pgadmin
-    image: dpage/pgadmin4:${PGADMIN_TAG}
+    image: dpage/pgadmin4:6
     environment:
       PGADMIN_DEFAULT_EMAIL: "${PGADMIN_DEFAULT_EMAIL}"
       PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_DEFAULT_PASSWORD}"
