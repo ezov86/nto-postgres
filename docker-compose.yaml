@@ -60,7 +60,7 @@ services:
   pgadmin:
     container_name: nto_pgadmin
     image: dpage/pgadmin4:6
-    user: "5050:5050"
+    user: root
     environment:
       PGADMIN_DEFAULT_EMAIL: "${NTO_PGADMIN_DEFAULT_EMAIL}"
       PGADMIN_DEFAULT_PASSWORD: "${NTO_PGADMIN_DEFAULT_PASSWORD}"
