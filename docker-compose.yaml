@@ -39,7 +39,7 @@ services:
       POSTGRES_PASSWORD: "${NTO_POSTGRES_PASSWORD:?err}"
     volumes:
       - ./initdb:/docker-entrypoint-initdb.d
-      - ./volumes/data:/var/lib/postgresql/data
+      - ./volumes/postgres/data:/var/lib/postgresql/data
     ports:
       - "${NTO_POSTGRES_HOST_PORT}:5432"
     healthcheck:
@@ -57,26 +57,15 @@ services:
     networks:
       - postgres
 
-  pgadmin_init:
-    container_name: nto_pgadmin_init
-    image: dpage/pgadmin4:6
-    volumes:
-      - ./volumes/pgadmin:/var/lib/pgadmin
-    entrypoint: /bin/sh -c "mkdir -p /var/lib/pgadmin && chown -R 5050:5050 /var/lib/pgadmin"
-    #- "mkdir -p /var/lib/pgadmin && chown -R 5050:5050 /var/lib/pgadmin"
-
   pgadmin:
     container_name: nto_pgadmin
     image: dpage/pgadmin4:6
-    depends_on:
-      pgadmin_init:
-        condition: service_completed_successfully
     environment:
       PGADMIN_DEFAULT_EMAIL: "${NTO_PGADMIN_DEFAULT_EMAIL}"
       PGADMIN_DEFAULT_PASSWORD: "${NTO_PGADMIN_DEFAULT_PASSWORD}"
       PGADMIN_CONFIG_SERVER_MODE: "False"
     volumes:
-      - ./volumes/pgadmin:/var/lib/pgadmin
+      - ./volumes/pgadmin:/var/lib
     ports:
       - "${NTO_PGADMIN_HOST_PORT}:80"
     restart: unless-stopped
