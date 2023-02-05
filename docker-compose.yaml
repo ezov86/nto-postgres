@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   postgres:
+    container_name: nto_postgres
     image: postgres:${POSTGRES_TAG}
     # command:
     #   - "postgres"
@@ -57,7 +58,7 @@ services:
       - postgres
 
   pgadmin:
-    container_name: pgadmin_container
+    container_name: nto_pgadmin
     image: dpage/pgadmin4:${PGADMIN_TAG}
     environment:
       PGADMIN_DEFAULT_EMAIL: "${PGADMIN_DEFAULT_EMAIL}"
