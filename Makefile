@@ -1,7 +1,7 @@
 .PHONY: run clean
 
 run:
-	mkdir -p volumes/postgres/ volumes/pgadmin/
+	mkdir -p volumes/data/ volumes/pgadmin/
 	docker compose up -d
 
 clean:
