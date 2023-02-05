@@ -43,7 +43,7 @@ services:
     ports:
       - "${NTO_POSTGRES_HOST_PORT}:5432"
     healthcheck:
-      test: ["CMD", "pg_isready -U ${NTO_POSTGRES_USER:?err} -d ${NTO_POSTGRES_DB:?err}"]
+      test: ["CMD-SHELL", "pg_isready -U ${NTO_POSTGRES_USER:?err} -d ${NTO_POSTGRES_DB:?err}"]
       interval: 30s
       timeout: 10s
       retries: 3
