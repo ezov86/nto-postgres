@@ -55,7 +55,7 @@ services:
           cpus: '1'
           memory: 2G
     networks:
-      - postgres
+      - proxynet
 
   pgadmin:
     container_name: nto-pgadmin
@@ -76,8 +76,10 @@ services:
           cpus: '1'
           memory: 1G
     networks:
-      - postgres
+      - proxynet
 
 networks:
-  postgres:
-    driver: bridge
+  proxynet:
+    name: postgres
+  # postgres:
+    # driver: bridge
