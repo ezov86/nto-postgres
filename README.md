@@ -11,3 +11,6 @@ Example in `.env.example`.
 
 ## Stop
 `make stop`
+
+## Stop and Remove container
+`make down`

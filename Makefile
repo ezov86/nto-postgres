@@ -1,4 +1,4 @@
-.PHONY: run clean
+.PHONY: run clean chown stop down
 
 run:
 	mkdir -p volumes/data/ volumes/pgadmin/
@@ -12,3 +12,6 @@ chown:
 
 stop:
 	docker stop nto-pgadmin nto-postgres
+
+down:
+	docker compose down
