@@ -11,4 +11,4 @@ chown:
 	chown -R 5050:5050 ./volumes/pgadmin/
 
 stop:
-	docker stop nto_pgadmin nto_postgres
+	docker stop nto-pgadmin nto-postgres

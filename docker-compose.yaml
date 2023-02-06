@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   postgres:
-    container_name: nto_postgres
+    container_name: nto-postgres
     image: postgres:15.1
     # command:
     #   - "postgres"
@@ -58,7 +58,7 @@ services:
       - postgres
 
   pgadmin:
-    container_name: nto_pgadmin
+    container_name: nto-pgadmin
     image: dpage/pgadmin4:6
     user: root
     environment:
