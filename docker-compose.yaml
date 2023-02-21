@@ -2,7 +2,7 @@ version: "3.9"
 services:
   postgres:
     container_name: nto-postgres
-    image: postgres:15.1
+    image: nto-postgres
     # command:
     #   - "postgres"
       # - "-c"
@@ -34,26 +34,26 @@ services:
       # - "-c"
       # - "pg_stat_statements.track=all"
     environment:
-      POSTGRES_DB: "${NTO_POSTGRES_DB:?err}"
-      POSTGRES_USER: "${NTO_POSTGRES_USER:?err}"
-      POSTGRES_PASSWORD: "${NTO_POSTGRES_PASSWORD:?err}"
+      POSTGRES_DB: "test"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "${NTO_POSTGRES_USER_PASSWORD:?err}"
     volumes:
-      - ./initdb:/docker-entrypoint-initdb.d
+      # - ./initdb:/docker-entrypoint-initdb.d
       - ./volumes/data:/var/lib/postgresql/data
     ports:
       - "${NTO_POSTGRES_HOST_PORT}:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${NTO_POSTGRES_USER:?err} -d ${NTO_POSTGRES_DB:?err}"]
+      test: ["CMD-SHELL", "pg_isready -U user -d test"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 10s
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '1'
-          memory: 2G
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '1'
+    #       memory: 2G
     networks:
       - proxynet
 

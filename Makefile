@@ -1,4 +1,7 @@
-.PHONY: run clean chown stop down
+.PHONY: build run clean chown stop down
+
+build:
+	docker build . -t nto-postgres
 
 run:
 	mkdir -p volumes/data/ volumes/pgadmin/
